@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import CardapioScreen from './cardapioScreen';
+import CardapioScreen from './CardapioScreen';
 import { useLinkTo } from '@react-navigation/native';
 
 function PrincipalScreen(): React.JSX.Element {
