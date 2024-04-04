@@ -10,9 +10,9 @@ import CadastroProduto from './src/screens/CadastroProdutos';
 function App(): JSX.Element {
 
   return (
-  <CardapioScreen/>
+  //<CardapioScreen/>
   //<LoginScreen/>
-  //<CadastroProduto/>
+  <CadastroProduto/>
   //<PrincipalScreen/>
   )
 }
