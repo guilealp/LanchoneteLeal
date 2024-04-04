@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 function CardapioScreen(): React.JSX.Element {
+    const [count, setCount] = useState(0);
+
     interface Item {
         id: string;
         nome: string;
@@ -30,7 +32,11 @@ function CardapioScreen(): React.JSX.Element {
 
 
     const renderItem = ({ item }: { item: Item }) => (
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity style={styles.item} 
+        activeOpacity={0.7}
+        onPress={() => {
+          setCount(count + 1)
+        }}>
             <Text style={styles.tituloCardapio}>{item.nome}</Text>
             <Text style={styles.descricao}>{item.descricao}</Text>
             <Text style={styles.preco}>{item.valor}</Text>
@@ -41,6 +47,13 @@ function CardapioScreen(): React.JSX.Element {
         <View style={styles.container}>
             <StatusBar backgroundColor="#9468f8" barStyle="light-content" />
             <View style={styles.header}>
+            <TouchableOpacity style={styles.limpar} 
+        activeOpacity={0.7}
+        onPress={() => {
+          setCount(count - count)
+        }}>
+            <Text>LIMPAR CARRINHO</Text>
+        </TouchableOpacity>
                 <Image source={require('./assents/images/logotipo.png')} style={styles.imgHeader} />
                 <Text style={styles.headerText}>Cardapio</Text>
             </View>
@@ -52,7 +65,8 @@ function CardapioScreen(): React.JSX.Element {
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                    <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} />
+                    <Text style={styles.itemCarrinho}>{count}</Text>
+                    <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} />              
                 </TouchableOpacity>
 
                 <TouchableOpacity>
@@ -95,7 +109,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        paddingVertical: 25,
+        paddingVertical: 25
 
     },
     footerIcon: {
@@ -125,6 +139,20 @@ const styles = StyleSheet.create({
     descricao: {
         fontSize: 15,
         color: 'black'
+    },
+    itemCarrinho:{
+        backgroundColor:'red',
+        borderRadius:100,
+        textAlign:'center',
+        width:20,
+
+    },
+    limpar:{
+        backgroundColor: '#c084ff',
+        padding: 20,
+        marginVertical: 5,
+        marginHorizontal: 16,
+        borderRadius: 15
     }
 });
 
