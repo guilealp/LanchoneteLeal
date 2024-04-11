@@ -13,9 +13,9 @@ function App(): JSX.Element {
   return (
   //<CardapioScreen/>
   //<LoginScreen/>
-  //<CadastroProduto/>
+  <CadastroProduto/>
   //<PrincipalScreen/>
-  <CadastroCliente/>
+  //<CadastroCliente/>
   )
 }
 
