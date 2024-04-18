@@ -7,7 +7,7 @@ const CadastroProduto:React.FC=()=>{
 const[produtos, setProdutos]= useState<Produto[]>([]);
 const[nome,setNome]= useState<string>('');
 const[preco, setPreco]= useState<string>('');
-const[ingredintes, setIngredintes]=useState<string>('');
+const[ingredientes, setingredientes]=useState<string>('');
 const[imagem, setImagem]=useState<any>('');
 
 
@@ -16,7 +16,7 @@ const CadastrarProduto = async ()=>{
     const formData = new FormData();
     formData.append('nome',nome);
     formData.append('preco',preco);
-    formData.append('ingredientes',ingredintes);
+    formData.append('ingredientes',ingredientes);
     formData.append('imagem',{
         uri: imagem,
         type: 'image/jpeg',
@@ -79,9 +79,10 @@ const selecionarImagem =()=>{
 
     return(
         <View style={styles.container}>
-            <StatusBar backgroundColor='red' barStyle='light-content'/>
+            <StatusBar backgroundColor='#9468f8' barStyle='light-content'/>
             <View style={styles.header}>
-                    <Text style={styles.headerText}>Top Food</Text>
+                <Image source={require("../assents/images/logotipo.png")} style={styles.imgHeader}/>
+                    <Text style={styles.headerText}>Cadastro Produto</Text>
             </View>
             <View style={styles.form}>
                 <TextInput style={styles.input}
@@ -96,8 +97,8 @@ const selecionarImagem =()=>{
                  
                  <TextInput style={styles.input}
                 placeholder="ingredientes"
-                value={ingredintes}
-                onChangeText={setIngredintes} 
+                value={ingredientes}
+                onChangeText={setingredientes} 
                 multiline/>
             <View style={styles.alinhamentoImageSelecionada}>
                 {imagem ? <Image source={{uri:imagem}} style={styles.imageSelecionada}/> :null}
@@ -113,10 +114,11 @@ const selecionarImagem =()=>{
 }
 const styles= StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        backgroundColor:'#9468f8'
     },
     header:{
-        backgroundColor:'red',
+        backgroundColor:'#9468f8',
         paddingVertical:10,
         alignItems:'center'
     },
@@ -127,33 +129,35 @@ const styles= StyleSheet.create({
     },
     form:{
         padding:10,
-        backgroundColor:'#f0f0f0',
+        backgroundColor:'#0702fe',
         marginBottom:10
     },
     input:{
         height:40,
-        borderColor:'gray',
+        borderColor:'#0702fe',
         borderWidth:1,
         marginBottom:10,
         paddingHorizontal:10,
-        borderRadius:10
+        borderRadius:10,
+        backgroundColor:'#c084ff'
     },
     imageButton:{
-        backgroundColor:'red',
+        backgroundColor:'#c084ff',
         padding:10,
         borderRadius:5,
         alignItems:'center',
         marginBottom:10,
+        borderColor:'white'
     },
     imageButtonText:{
         color:'white',
         fontWeight:'bold'
     },
     imageSelecionada:{
-        width:200,
-        height:200,
+        width:150,
+        height:150,
         resizeMode:'cover',
-        borderRadius:5,
+        borderRadius:550,
         marginBottom:10,
     },
     alinhamentoImageSelecionada:{
@@ -168,6 +172,10 @@ const styles= StyleSheet.create({
     buttonText:{
         color:'white',
         fontWeight:'bold'
+    },
+    imgHeader: {
+        width: 150,
+        height: 150,
     }
 });
 export default CadastroProduto;

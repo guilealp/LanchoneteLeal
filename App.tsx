@@ -5,17 +5,19 @@ import CardapioScreen from './src/CardapioScreen';
 import LoginScreen from './src/LoginScreen';
 import CadastroProduto from './src/screens/CadastroProdutos';
 import CadastroCliente from './src/screens/CadastroCliente';
+import CarrinhoScreen from './src/CarrinhoScreen';
 
 
 
 function App(): JSX.Element {
 
   return (
-  //<CardapioScreen/>
+  <CardapioScreen/>
   //<LoginScreen/>
-  <CadastroProduto/>
+  //<CadastroProduto/>
   //<PrincipalScreen/>
   //<CadastroCliente/>
+  //<CarrinhoScreen/>
   )
 }
 

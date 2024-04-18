@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
-function CardapioScreen(): React.JSX.Element {
+function CarrinhoScreen(): React.JSX.Element {
     
     const [produtos, setProdutos] = useState<Produtos[]>([]);
 
@@ -34,40 +34,25 @@ interface Produtos {
             console.log(error);
         }
     }
-    const [count, setCount] = useState(0);
 
 
 
-        const renderItem = ({ item }: { item: Produtos }) => (
-            <TouchableOpacity style={styles.item} 
-            activeOpacity={0.7}
-            onPress={() => {
-            setCount(count + 1)
-            }}>
-                <Text style={styles.tituloCardapio}>{item.nome}</Text>
-                <Text style={styles.descricao}>{item.descricao}</Text>
-                <Text style={styles.preco}>{item.valor}</Text>
-            { /* <Image source={item.images} style={styles.img} />  */}
-            </TouchableOpacity>
-        );
+    const renderItem = ({ item }: { item: Produtos }) => (
+        <TouchableOpacity style={styles.item} >
+            <Text style={styles.tituloCardapio}>{item.nome}</Text>
+            <Text style={styles.descricao}>{item.descricao}</Text>
+            <Text style={styles.preco}>{item.valor}</Text>
+          { /* <Image source={item.images} style={styles.img} />  */}
+        </TouchableOpacity>
+    );
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="#9468f8" barStyle="light-content" />
             <View style={styles.header}>
-            <TouchableOpacity style={styles.limpar} 
-        activeOpacity={0.7}
-        onPress={() => {
-          setCount(count - count)
-        }}>
-            <Text>LIMPAR CARRINHO</Text>
-        </TouchableOpacity>
                 <Image source={require('./assents/images/logotipo.png')} style={styles.imgHeader} />
-                <Text style={styles.headerText}>Cardapio</Text>
+                <Text style={styles.headerText}>Carrinho</Text>
             </View>
-                <FlatList showsVerticalScrollIndicator={false} 
-                data={produtos} 
-                renderItem={renderItem} 
-                keyExtractor={(item) => item.id} />
+                <FlatList showsVerticalScrollIndicator={false} data={produtos} renderItem={renderItem} keyExtractor={(item) => item.id} />
             
             <View style={styles.footer}>
                 <TouchableOpacity>
@@ -75,8 +60,7 @@ interface Produtos {
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                    
-                    <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} /> <Text style={styles.itemCarrinho}>{count}</Text>         
+                    <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} />              
                 </TouchableOpacity>
 
                 <TouchableOpacity>
@@ -155,9 +139,6 @@ const styles = StyleSheet.create({
         borderRadius:100,
         textAlign:'center',
         width:20,
-        position:'absolute',
-        bottom:20,
-        right:15
 
     },
     limpar:{
@@ -169,4 +150,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CardapioScreen;
+export default CarrinhoScreen;
