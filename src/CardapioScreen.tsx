@@ -75,8 +75,8 @@ interface Produtos {
                 </TouchableOpacity>
 
                 <TouchableOpacity>
-                    
-                    <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} /> <Text style={styles.itemCarrinho}>{count}</Text>         
+                    <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} />
+                     <Text style={styles.itemCarrinho}>{count}</Text>         
                 </TouchableOpacity>
 
                 <TouchableOpacity>
