@@ -1,23 +1,27 @@
 import React from 'react';
-import { View } from 'react-native';
-import PrincipalScreen from './src/PrincipalScreen';
 import CardapioScreen from './src/CardapioScreen';
 import LoginScreen from './src/LoginScreen';
 import CadastroProduto from './src/screens/CadastroProdutos';
 import CadastroCliente from './src/screens/CadastroCliente';
 import CarrinhoScreen from './src/CarrinhoScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
-function App(): JSX.Element {
-
+function App(): React.ReactElement{
+const Stack = createStackNavigator();
   return (
-  <CardapioScreen/>
-  //<LoginScreen/>
-  //<CadastroProduto/>
-  //<PrincipalScreen/>
-  //<CadastroCliente/>
-  //<CarrinhoScreen/>
+  
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Cardapio' component={CardapioScreen} options={{headerShown: false}}/>
+        <Stack.Screen name='Carrinho' component={CarrinhoScreen} options={{headerShown: false}}/>
+        <Stack.Screen name='CadastroProduto' component={CadastroProduto} options={{headerShown: false}}/>
+        <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false}}/>
+        <Stack.Screen name='CadastroCliente' component={CadastroCliente} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 

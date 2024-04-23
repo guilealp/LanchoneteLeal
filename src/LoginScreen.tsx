@@ -1,8 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 function LoginScreen(): JSX.Element {  
 
+    const navigation = useNavigation();
     const[email,setEmail]= useState("");
     const[password, setPassword]=useState("");
     function login(){
@@ -31,7 +33,7 @@ function LoginScreen(): JSX.Element {
                 <TouchableOpacity >
                     <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
                 </TouchableOpacity>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={()=>navigation.navigate('CadastroCliente')}>
                     <Text style={styles.forgotPassword}>Não possui conta? Cadastre-se</Text>
                 </TouchableOpacity>
             </View>

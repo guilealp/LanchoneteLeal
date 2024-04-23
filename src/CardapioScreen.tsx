@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FlatList, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-
+import { useNavigation } from "@react-navigation/native";
+const navigation = useNavigation();
 function CardapioScreen(): React.JSX.Element {
     
     const [produtos, setProdutos] = useState<Produtos[]>([]);
@@ -19,7 +19,6 @@ interface Produtos {
     useEffect(() => {
         listarProdutos();
     }, []);
-
 
 
 
@@ -74,16 +73,16 @@ interface Produtos {
                     <Image source={require('./assents/images/home.png')} style={styles.footerIcon} />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Carrinho')}>
                     <Image source={require('./assents/images/carrinho.png')} style={styles.footerIcon} />
                      <Text style={styles.itemCarrinho}>{count}</Text>         
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('CadastroProduto')}>
                     <Image source={require('./assents/images/orders.png')} style={styles.footerIcon} />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
                     <Image source={require('./assents/images/profile.png')} style={styles.footerIcon} />
                 </TouchableOpacity>
 
